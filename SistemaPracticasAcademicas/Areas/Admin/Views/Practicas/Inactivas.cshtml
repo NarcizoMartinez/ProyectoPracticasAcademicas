@@ -1,0 +1,48 @@
+﻿@model IEnumerable<SistemaPracticasAcademicas.Models.Practica>
+@{ Layout = "AdminLayout";}
+<section class="content">
+    <div class="scrollable">
+        <table class="styled-table" id="styled-table">
+            <thead>
+                <tr>
+                    <th>Docente</th>
+                    <th>Periodo</th>
+                    <th>Titulo</th>
+                    <th>Asignatura</th>
+                    <th>Unidad</th>
+                    <th>Objetivo</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            @foreach (var p in Model)
+            {
+                <tr>
+                    <td>@p.IdUsuarioNavigation.Nombre</td>
+                    <td>@p.Periodo</td>
+                    <td>@p.Tema</td>
+                    <td>@p.IdAsignaturaNavigation.Nombre</td>
+                    <td>@p.NumUnidad</td>
+                    <td>@p.Objetivo</td>
+                    <td>
+                        <a href="~/Admin/Practicas/Ver/@p.Id" target="_blank">
+                            <span class="material-icons"><ion-icon name="eye"></ion-icon></span>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="~/Admin/Practicas/Activar/@p.Id">
+                            <span class="material-icons"><ion-icon name="hammer"></ion-icon></span>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="~/Admin/Practicas/EliminarFisica/@p.Id">
+                            <span class="material-icons" id="seliminar"><ion-icon name="trash-bin"></ion-icon></span>
+                        </a>
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</section>  
+<script>

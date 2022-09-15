@@ -1,0 +1,76 @@
+﻿@model IEnumerable<SistemaPracticasAcademicas.Models.Practica>
+@{ Layout = "AdminLayout";}
+<section class="content">
+    <div class="guardar">   
+        <div class="wrapper">
+            <div class="searchBox">
+                <form asp-controller="Practicas" asp-action="Index" method="post">
+                    <input type="text" placeholder="Buscar por título, docente, asignatura o periodo..." title="Escriba un nombre" name="buscar" />
+                    <button type="submit">
+                        <ion-icon name="search"></ion-icon>
+                    </button>
+                </form>
+            </div>
+            <form action="~/Admin/Practicas/Agregar">
+                <button type="submit" class="btnAgregar"><ion-icon name="add"></ion-icon></button>
+            </form>
+        </div>      
+    </div>
+    <div class="scrollable">
+        <table class="styled-table" id="styled-table">
+            <thead>
+                <tr>
+                    <th>Docente</th>
+                    <th>Periodo</th>
+                    <th>Título</th>
+                    <th>Asignatura</th>
+                    <th>Unidad</th>
+                    <th>Objetivo</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            @foreach (var p in Model)
+            {
+                <tr>
+                    <td>@p.IdUsuarioNavigation.Nombre</td>
+                    <td style="text-align:left;">@p.Periodo</td>
+                    @if(@p.Tema.Length > 30)
+                    {
+                        <td style="text-align:left;">@(p.Tema.Substring(0, 30)+"...")</td>
+                    }
+                    else
+                    {
+                        <td style="text-align:left;">@p.Tema</td>
+                    }
+                    <td style="text-align:left;">@p.IdAsignaturaNavigation.Nombre</td>
+                    <td>@p.NumUnidad</td>
+                    @if(@p.Objetivo.Length > 42)
+                    {
+                        <td style="text-align:left;">@(p.Objetivo.Substring(0, 42)+"...")</td>
+                    }
+                    else
+                    {
+                        <td style="text-align:left;">@p.Objetivo</td>
+                    }
+                    <td>
+                        <a href="~/Admin/Practicas/Ver/@p.Id" target="_blank">
+                            <ion-icon name="eye"></ion-icon>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="~/Admin/Practicas/Editar/@p.Id">
+                            <ion-icon name="create"></ion-icon>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="~/Admin/Practicas/Eliminar/@p.Id">
+                            <ion-icon name="trash" style="color:#CF2A27;"></ion-icon>
+                        </a>
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</section>  

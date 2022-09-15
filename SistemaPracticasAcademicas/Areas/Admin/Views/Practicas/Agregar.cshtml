@@ -1,0 +1,37 @@
+﻿@model SistemaPracticasAcademicas.Areas.Admin.Models.ViewModels.PracticasViewModel
+@{ Layout = "AdminLayout";}
+<section class="content">
+    <div class="scrollable" style="overflow-y:auto;">
+        <form class="modal-form" method="post" action="~/Admin/Practicas/Agregar">
+            <h1>Agregar Práctica</h1> 
+            <div class="grid">
+                <div class="c1">
+                    <select required asp-for="Practica.IdAsignatura" asp-items="@(new SelectList(Model.Asignaturas,"Id","Nombre"))">
+                         <option selected value="">Seleccionar Asignatura</option>
+                    </select></div>
+                <div class="c2">
+                    <select asp-for="Practica.Periodo">
+                         <option value="Febrero - Junio">Febrero - Junio</option>
+                         <option value="Agosto - Diciembre">Agosto - Diciembre</option>
+                    </select>
+                </div>
+                <div class="c3">
+                     <input type="number" asp-for="Practica.NumUnidad" placeholder="N. Unidad"/>
+                </div>
+            </div>
+            <input type="text" asp-for="Practica.NombreUnidad" placeholder="Nombre Unidad"/>
+            <input type="text" class="input" asp-for="Practica.Tema" placeholder="Tema"/>
+            <input type="text" class="input" asp-for="Practica.Nombre" placeholder="Nombre"/>
+            <input type="text" asp-for="Practica.Planteamiento" placeholder="Planteamiento"/>
+            <input type="text" asp-for="Practica.Objetivo" placeholder="Objetivo"/>
+            <input type="text" asp-for="Practica.Resultado" placeholder="Resultado"/>
+            <p id="msgError" class="msgError">
+                @Html.ValidationSummary()
+            </p>
+            <div class="buttons-practica">
+                <input type="submit" class="btnAceptar" value="ACEPTAR"/>
+                <button type="button" class="btnCancelar" onclick="window.location.href='/Admin/Practicas';">CANCELAR</button>
+            </div>
+        </form>
+    </div>
+</section>

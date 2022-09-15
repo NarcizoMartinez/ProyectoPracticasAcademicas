@@ -1,0 +1,52 @@
+﻿@model IEnumerable<SistemaPracticasAcademicas.Models.Usuario>
+@{ Layout = "AdminLayout";}
+<section class="content">
+    <div class="guardar">
+        <div class="wrapper">
+            <div class="searchBox">
+                <form asp-controller="Docentes" asp-action="Index" method="post">
+                    <input type="text" placeholder="Buscar por nombre o departamento..." title="Escriba un nombre" name="buscar"/>
+                    <button type="submit">
+                        <ion-icon name="search"></ion-icon>
+                    </button>
+                </form>
+            </div>
+             <form action="~/Admin/Docentes/Agregar">
+                 <button type="submit" class="btnAgregar"><ion-icon name="add"></ion-icon></button>
+             </form>
+         </div>
+    </div>
+    <div class="scrollable">
+        <table class="styled-table" id="styled-table">
+            <thead>
+                <tr>
+                    <th>Clave</th>
+                    <th>Nombre</th>
+                    <th>Departamento</th>
+                    <th>Rol</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                </thead>
+                @foreach (var docente in Model)
+                {
+                    <tr>
+                        <td>@docente.NumeroControl</td>
+                        <td style="text-align:left;">@docente.Nombre</td>
+                        <td style="text-align:left;">@docente.IdDivisionNavigation.Nombre</td>
+                        <td style="text-align:left;">@docente.IdRolNavigation.Rol</td>
+                        <td>
+                            <a href="~/Admin/Docentes/Editar/@docente.Id">
+                                <ion-icon name="create"></ion-icon>
+                            </a>
+                        </td>
+                        <td>
+                            <a href="~/Admin/Docentes/Eliminar/@docente.Id">
+                                <ion-icon name="trash" style="color:#CF2A27;"></ion-icon>
+                            </a>
+                        </td>
+                    </tr>
+                  }
+        </table>
+    </div>
+</section>

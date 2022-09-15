@@ -1,0 +1,48 @@
+﻿@model IEnumerable<SistemaPracticasAcademicas.Models.Asignatura>
+@{ Layout = "AdminLayout";}
+<section class="content">
+    <div class="guardar">   
+        <div class="wrapper">
+                <div class="searchBox">
+                    <form asp-controller="Asignaturas" asp-action="Index" method="post">
+                        <input type="text" placeholder="Buscar por nombre..." title="Escriba un nombre" name="id">
+                        <button type="submit">
+                            <ion-icon name="search"></ion-icon>
+                        </button>
+                    </form>
+                </div>
+                <form action="~/Admin/Asignaturas/Agregar">
+                    <button type="submit" class="btnAgregar"><ion-icon name="add"></ion-icon></button>
+                </form>
+        </div>      
+    </div>
+    <div class="scrollable">
+        <table class="styled-table" id="styled-table">
+            <thead>
+                <tr>
+                    <th>Clave</th>
+                    <th>Nombre</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            @foreach (var asignatura in Model)
+            {
+                <tr>
+                    <td>@asignatura.Clave</td>
+                    <td style="text-align:left;">@asignatura.Nombre</td>
+                    <td style="text-align:left;">
+                        <a href="~/Admin/Asignaturas/Editar/@asignatura.Id">
+                            <ion-icon name="create"></ion-icon>
+                        </a>
+                    </td>
+                    <td style="text-align:left;">
+                        <a href="~/Admin/Asignaturas/Eliminar/@asignatura.Id">
+                           <ion-icon name="trash" style="color:#CF2A27;"></ion-icon>
+                        </a>
+                    </td>
+                </tr>
+            }
+        </table>
+    </div> 
+</section>

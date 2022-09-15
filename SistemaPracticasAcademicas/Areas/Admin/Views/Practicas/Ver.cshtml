@@ -1,0 +1,64 @@
+﻿@model SistemaPracticasAcademicas.Models.Practica
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/css/pdf.css">
+    <title>@Model.Nombre</title>
+</head>
+<body>
+    <div class="encabezado">
+        <p class="titulo-Encabezado">INSTITUTO TECNOLÓGICO DE ESTUDIOS SUPERIORESDE LA REGIÓN CARBONÍFERA</p>
+        <img src="https://www.itesrc.edu.mx/logos/logo_TRANSP_web.png" class="logotec" />
+        <p class="formato">Formato de práctica</p>
+    </div>
+        <div class="nombrePractica2">
+        <div style="width:22em;">
+            <p class="descripcion">NOMBRE UNIDAD:</p>
+            <p class="bold">@Model.NombreUnidad</p>
+        </div>
+        <div>
+            <p class="descripcion">MATERIA:</p>
+            <p class="bold">@Model.IdAsignaturaNavigation.Nombre</p>
+        </div>
+        <div style="width:5em; border-right:none;">
+            <p class="descripcion">FECHA:</p>
+            <p class="bold">@DateTime.Now.ToShortDateString()</p>
+        </div>
+    </div>
+    <div class="nombrePractica">
+        <div>
+            <p class="descripcion">NOMBRE:</p>
+            <p class="bold">@Model.Nombre</p>
+        </div>
+        <div>
+            <p class="descripcion">TEMA:</p>
+            <p class="bold">@Model.Tema</p>
+        </div>
+        <div style="width:6em;">
+            <p class="descripcion">UNIDAD:</p>
+            <p class="bold">@Model.NumUnidad</p>
+        </div>
+        <div style="width:10em; border-right:none;">
+            <p class="descripcion">PERIODO:</p>
+            <p class="bold">@Model.Periodo</p>
+        </div>
+        </div>
+
+    <div class="objetivos">
+        <p class="descripcion">OBJETIVOS:</p>
+        <p class="bold">@Model.Objetivo</p>
+    </div>
+    <div class="planteamiento">
+        <p class="descripcion">PLANTEAMIENTOS:</p>
+        <p class="bold">@Model.Planteamiento.Replace(". ",". \n\n")</p>
+    </div>
+    <div class="resultados">
+        <p class="descripcion">RESULTADOS ESPERADOS:</p>
+        <p class="bold">@Model.Resultado</p>
+    </div>
+    <footer>
+        <p class="descripcion">Elaborado por: @Model.IdUsuarioNavigation.Nombre</p>
+    </footer>
+</body>
+</html>

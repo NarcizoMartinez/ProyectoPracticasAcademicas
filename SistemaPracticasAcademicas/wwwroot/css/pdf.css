@@ -1,0 +1,79 @@
+@page{
+    size:A4;
+    margin:0;
+    font-family:Calibri, 'Trebuchet MS', sans-serif;
+    font-size:15px;
+}
+
+*{
+    margin:0;
+    padding:0;
+}
+body {
+    border: 1px solid #000;
+}
+.encabezado{
+    border-bottom:1px solid #000;
+    padding:5px;
+    text-align:center;
+    height:12em;
+    font-weight:600;
+}
+.formato{
+    font-size:1.5em;
+    top:-2em;
+    position:relative;
+}
+.logotec {
+    height: 150px;
+    width: 150px;
+    position: relative;
+    top: -1em;
+    right: 22.5em;
+    z-index:0;
+}
+.titulo-Encabezado{
+    font-size:1.5em;
+    text-align:center;
+}
+.bold{
+    font-weight:600;
+    font-size:1.2em;
+}
+.descripcion{
+    font-size:.9em;
+    font-weight:600;
+    color:#808080;
+}
+.nombrePractica{
+    border-bottom:1px solid #000;
+}
+.nombrePractica > div{
+    display:inline-block;
+    border-right:1px solid #000;
+    padding:5px;
+    width:18em;
+}
+.nombrePractica2 {
+    border-bottom: 1px solid #000;
+}
+.nombrePractica2 > div{
+    display:inline-block;
+    border-right:1px solid #000;
+    padding:5px;
+    width:25em;
+}
+.objetivos{
+    height:16em;
+    border-bottom:1px solid #000;
+    padding:5px;
+}
+.planteamiento{
+    height:26em;
+    border-bottom:1px solid #000;
+    padding:5px;
+}
+.resultados{
+    height:16em;
+    padding:5px;
+}

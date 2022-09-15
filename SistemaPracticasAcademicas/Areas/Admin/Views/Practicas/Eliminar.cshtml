@@ -1,0 +1,17 @@
+﻿@model SistemaPracticasAcademicas.Models.Practica
+@{ Layout = "AdminLayout";}
+<section class="content">
+    <div class="scrollable">
+        <form class="modal-form" action="~/Admin/Practicas/Eliminar" method="post">
+            <input type="hidden" name="Id" value="@Model.Id" />
+            <h1>¿Está seguro que desea eliminar la práctica '@Model.Nombre'?</h1>
+            <p class="msgError">
+                @Html.ValidationSummary()
+            </p>
+            <div class="buttons">
+                <input type="submit" class="btnAceptar" value="ACEPTAR"/>
+                <button type="button" class="btnCancelar" onclick="window.location.href='/Admin/Practicas';">CANCELAR</button>
+            </div>
+        </form>
+    </div>
+</section>  

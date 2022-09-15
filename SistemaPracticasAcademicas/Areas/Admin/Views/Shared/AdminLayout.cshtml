@@ -1,0 +1,115 @@
+﻿@inject SistemaPracticasAcademicas.Services.PeriodoService _Periodo
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1" />
+    <meta name="google" value="notranslate">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <title>Sistema Escolar</title>
+    <meta name="description" content="Sistema Escolar, gestión de practicas." />
+    <link rel="stylesheet" href="~/css/styles.css" media="screen, projection" />
+    @*<link rel="stylesheet" href="~/css/charts.min.css"/>*@
+    <script src='https://cdn.plot.ly/plotly-2.12.1.min.js'></script>
+</head>
+<body>
+    <header class="header">
+        <div class="body-titulo">
+            <span class="titulo">
+                <a href="~/Admin/Home">Inicio</a>
+            </span>
+        </div>
+        <div class="body-periodo-escolar">
+            <span class="periodo-escolar">
+                Periodo:
+                <a>@_Periodo.GetPeriodo()</a>
+            </span>
+        </div>
+    </header>
+    <aside class="nav-home">
+        <span></span>
+        <div class="body-usuario">
+            <img class="image-usuario" src="~/images/users/user.png" alt="Imagen Usuario">
+            <p class="nombre-usuario">
+                @User.Identity.Name
+            </p>
+            <div class="linea-nombre"></div>
+            <ul class="secciones">
+                @if (User.IsInRole("Administrador"))
+                {   
+                <li>
+                    <a id="dashboard" href="~/Admin/Dashboard">
+                        <ion-icon name="home"></ion-icon>Dashboard
+                    </a>
+                    </li>
+                <li>
+                    <a id="divisiones" href="~/Admin/Divisiones">
+                        <ion-icon name="school"></ion-icon>Divisiones
+                    </a>
+                </li>
+                }
+                @if (User.IsInRole("Administrador") || User.IsInRole("Jefe Departamento"))
+                {
+                <li>   
+                    <a id="asignaturas" href="~/Admin/Asignaturas">
+                        <ion-icon name="bookmarks"></ion-icon>Asignaturas
+                    </a>
+                </li>
+                <li>
+                    <a id="docentes" href="~/Admin/Docentes">
+                        <ion-icon name="person"></ion-icon>Docentes
+                    </a>
+                </li>
+                }
+                <li>
+                    <a id="practicas" href="~/Admin/Practicas">
+                        <ion-icon name="create"></ion-icon>Practicas
+                    </a>
+               </li>
+               <li>
+                   <a id="configuracion" href="~/Admin/Configuracion">
+                       <ion-icon name="settings"></ion-icon>Configuración
+                   </a>
+               </li>
+               <li>
+                   <a href="~/Home/CerrarSesion">
+                       <ion-icon name="log-out"></ion-icon>Cerrar Sesión
+                   </a>
+               </li>
+            </ul>
+        </div>
+    </aside>
+    <main>
+        @RenderBody()
+    </main>
+    <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+    <script>
+        if(window.location.href.indexOf("Dashboard") > -1){
+            var anchor = document.getElementById('dashboard');
+            anchor.style.backgroundColor = "#fff";
+            anchor.style.color = "#165A4C";
+        }else if (window.location.href.indexOf("Asignaturas") > -1){
+            var anchor = document.getElementById('asignaturas');
+            anchor.style.backgroundColor = "#fff";
+            anchor.style.color = "#165A4C";
+        }else if (window.location.href.indexOf("Docentes") > -1){
+            var anchor = document.getElementById('docentes');
+            anchor.style.backgroundColor = "#fff";
+            anchor.style.color = "#165A4C";
+        }
+        else if(window.location.href.indexOf("Divisiones") > -1){
+            var anchor = document.getElementById('divisiones');
+            anchor.style.backgroundColor = "#fff";
+            anchor.style.color = "#165A4C";
+        }else if(window.location.href.indexOf("Practicas") > -1){
+            var anchor = document.getElementById('practicas');
+            anchor.style.backgroundColor = "#fff";
+            anchor.style.color = "#165A4C";
+        }else if(window.location.href.indexOf("Configuracion") > -1){
+            var anchor = document.getElementById('configuracion');
+            anchor.style.backgroundColor = "#fff";
+            anchor.style.color = "#165A4C";
+        }
+    </script>
+</body>
+</html>

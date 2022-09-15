@@ -1,0 +1,16 @@
+﻿@model SistemaPracticasAcademicas.Models.Asignatura
+@{ Layout = "AdminLayout";}
+<section class="content">
+    <div class="scrollable">
+        <form class="modal-form" method="post" action="~/Admin/Asignaturas/Agregar">
+            <h1>Agregar Asignatura</h1>
+            <input type="text" maxlength="7" placeholder="Clave" name="Clave"/>
+            <input type="text" placeholder="Nombre" name="Nombre" />
+            <p>@Html.ValidationSummary()</p>
+            <div class="buttons">
+                <input type="submit" class="btnAceptar" value="ACEPTAR" />
+                <button type="button" class="btnCancelar" onclick="window.location.href='/Admin/Asignaturas'">CANCELAR</button>
+            </div>
+        </form>
+    </div>
+</section>  

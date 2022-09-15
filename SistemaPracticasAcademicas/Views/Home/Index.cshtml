@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Inicio Sesion</title>
+    <link href="~/css/styles.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+</head>
+<body class="login">
+    <div class="wrap-titulo-login">
+        <div class="titulo-login">
+            <h1> Instituto Tecnológico de Estudios Superiores de la Región Carbonífera</h1>
+        </div>
+    </div>
+    <div class="form-login">
+        <div class="form-login-logo"></div>
+        <form method="post" action="~/Home/Index">
+            <label class="label">INICIAR SESIÓN</label>
+            <input class="txtcontrol" type="text" placeholder="Número Control" name="_user" />
+            <input class="txtcontrasena" type="password" placeholder="Contraseña" name="_password" />
+            <button class="button" type="submit">ENTRAR</button>
+        </form>
+            <a href="~/Home/RecuperarContrasena" class="forgot-password">Olvidé contraseña</a>
+            <div>
+                <p class="validation-summary-errors">@Html.ValidationSummary()</p>
+            </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,38 @@
+﻿@model IEnumerable<SistemaPracticasAcademicas.Models.Practica>
+@{ Layout = "AdminLayout";}
+<section class="content">
+    <div class="scrollable">
+        <div class="card-container">
+            <div class="dashboard-info">
+                <div class="card">
+                    <h2>Total Prácticas</h2>
+                    <p>@ViewBag.TotalPracticas</p>
+                </div>
+                <div class="card">
+                    <h2>Prácticas Activas</h2>
+                    <p>@ViewBag.PracticaActiva</p>
+                </div>
+                <div class="card">
+                    <h2>Prácticas Inactivas</h2>
+                    <p>@ViewBag.PracticaInactiva</p>
+                </div>
+                <div class="card">
+                    <h2>Total Personal</h2>
+                    <p>@ViewBag.TotalDocentes</p>
+                </div>
+            </div>
+            <div id="piechart"></div>
+        </div>
+    </div>
+</section>
+<script>
+    var data = [{
+
+        x:["Total Prácticas", "Prácticas Activas", "Prácticas Inactivas", "Personal"],
+        y:[@ViewBag.TotalPracticas, @ViewBag.PracticaActiva, @ViewBag.PracticaInactiva, @ViewBag.TotalDocentes],
+        type: 'bar'
+        }
+    ];
+
+Plotly.newPlot('piechart', data)
+</script>

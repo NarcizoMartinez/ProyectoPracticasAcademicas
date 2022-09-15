@@ -1,0 +1,50 @@
+﻿@model IEnumerable<SistemaPracticasAcademicas.Models.Division>
+@{ Layout = "AdminLayout";}
+<section class="content">
+    <div class="guardar">   
+        <div class="wrapper">
+            <div class="searchBox">
+                <form asp-controller="Divisiones" asp-action="Index" method="post">
+                    <input type="text" placeholder="Buscar por nombre..." name="id"/>
+                    <button type="submit">
+                        <ion-icon name="search"></ion-icon>
+                    </button>
+                </form>
+            </div>
+            <form action="~/Admin/Divisiones/Agregar">
+                <button type="submit" class="btnAgregar"><ion-icon name="add"></ion-icon></button>
+            </form>
+        </div>      
+    </div>
+    <div class="scrollable">
+        <table class="styled-table" id="styled-table">
+            <thead>
+                <tr>
+                    <th>Clave</th>
+                    <th>Nombre</th>
+                    <th>Jefe Carrera</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            @foreach (var division in Model)
+            {
+                <tr>
+                    <td>@division.Clave</td>
+                    <td style="text-align:left;">@division.Nombre</td>
+                    <td style="text-align:left;">@division.IdJefeNavigation.Nombre</td>
+                    <td>
+                        <a href="~/Admin/Divisiones/Editar/@division.Id">
+                            <ion-icon name="create"></ion-icon>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="~/Admin/Divisiones/Eliminar/@division.Id">
+                            <ion-icon name="trash" style="color:#CF2A27;"></ion-icon>
+                        </a>
+                    </td>
+                </tr>
+            }
+        </table>
+    </div> 
+</section>

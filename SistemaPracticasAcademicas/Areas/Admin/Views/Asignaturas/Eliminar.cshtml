@@ -1,0 +1,17 @@
+﻿@model SistemaPracticasAcademicas.Models.Asignatura
+@{ Layout = "AdminLayout";}
+<section class="content">
+    <div class="scrollable">
+        <form class="modal-form" action="~/Admin/Asignaturas/Eliminar" method="post">
+            <input type="hidden" name="Id" value="@Model.Id" />
+            <h1>¿Está seguro que desea eliminar la asignatura '@Model.Nombre' con clave: @Model.Clave?</h1>
+            <p class="msgError">
+                @Html.ValidationSummary()
+            </p>
+            <div class="buttons">
+                <input type="submit" class="btnAceptar" Value="ACEPTAR"/>
+                <button type="button" class="btnCancelar" onclick="window.location.href='/Admin/Asignaturas'">CANCELAR</button>
+            </div>
+        </form>
+    </div>
+</section>  

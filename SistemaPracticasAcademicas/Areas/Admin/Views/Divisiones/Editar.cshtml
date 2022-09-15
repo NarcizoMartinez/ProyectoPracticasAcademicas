@@ -1,0 +1,22 @@
+﻿@model SistemaPracticasAcademicas.Areas.Admin.Models.ViewModels.DivisionViewModel
+@{ Layout = "AdminLayout";}
+<section class="content">
+    <div class="scrollable">
+        <form class="modal-form" method="post" action="~/Admin/Divisiones/Editar">
+            <h1>Editar División</h1>
+            <select required asp-for="Divisiones.IdJefe" asp-items="@(new SelectList(Model.Docentes,"Id","Nombre"))">
+                <option selected value="">Seleccionar Personal</option>
+            </select>
+            <input type="hidden" asp-for="Divisiones.Id" />
+            <input type="text" class="input" asp-for="Divisiones.Clave" />
+            <input type="text" class="input" asp-for="Divisiones.Nombre" />
+            <p id="msgError" class="msgError">
+                @Html.ValidationSummary()
+            </p>
+           <div class="buttons">
+                <input type="submit" class="btnAceptar" value="GUARDAR"/>
+                <button type="button" class="btnCancelar" onclick="window.location.href='/Admin/Divisiones'">CANCELAR</button>
+            </div>
+        </form>
+    </div>
+</section>  

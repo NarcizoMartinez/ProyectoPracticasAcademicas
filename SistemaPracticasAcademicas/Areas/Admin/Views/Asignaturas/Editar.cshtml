@@ -1,0 +1,19 @@
+﻿@model SistemaPracticasAcademicas.Models.Asignatura
+@{ Layout = "AdminLayout";}
+<section class="content">
+    <div class="scrollable">
+        <form class="modal-form" action="~/Admin/Asignaturas/Editar" method="post">
+            <h1>Editar Asignatura</h1>
+            <input type="hidden" name="Id" value="@Model.Id" />
+            <input type="text" class="input" name="Clave" value="@Model.Clave" maxlength="7"/>
+            <input type="text" class="input" name="Nombre" value="@Model.Nombre" />
+            <p class="msgError">
+                @Html.ValidationSummary()
+            </p>
+            <div class="buttons">
+                <input type="submit" class="btnAceptar" value="GUARDAR"/>
+                <button type="button" class="btnCancelar" onclick="window.location.href='/Admin/Asignaturas'">CANCELAR</button>
+            </div>
+        </form>
+    </div>
+</section>  

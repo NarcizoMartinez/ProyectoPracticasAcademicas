@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Recuperar Contraseña</title>
+    <link href="~/css/styles.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+</head>
+<body class="login">
+    <div class="wrap-titulo-login">
+        <div class="titulo-login">
+            <h1> Instituto Tecnológico de Estudios Superiores de la Región Carbonífera</h1>
+        </div>
+    </div>
+     <div class="form-recovery">
+            <label class="label-recovery">¿Olvidó su contraseña?</label><br/>
+            <div class="underline"></div>
+            <label class="label-text-recovery">Escriba su correo institucional para ayudarle a restablecer su contraseña</label>
+        <form method="post" action="~/Home/RecuperarContrasena">
+            <input class="txtemail" type="email" placeholder="E-mail" name="_email"/>
+            <p class="validation-summary-errors">@Html.ValidationSummary()</p>
+
+            <button class="button" type="submit">ACEPTAR</button>
+        </form> 
+            <button class="go-back" onclick="window.location.href='/Home/Index';">
+                <ion-icon name="arrow-back"></ion-icon>
+            </button>
+    </div>
+</body>
+<script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+</html>

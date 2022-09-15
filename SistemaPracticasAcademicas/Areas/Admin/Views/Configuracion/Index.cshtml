@@ -1,0 +1,18 @@
+﻿@model SistemaPracticasAcademicas.Models.Usuario
+@{ Layout = "AdminLayout";}
+<section class="content">
+    <div class="scrollable">
+        <form class="modal-form" method="post" action="~/Admin/Configuracion/Index">
+            <h1>Cambiar Contraseña</h1>
+            <input type="text" placeholder="Nueva contraseña" class="input" name="_pass"/>
+            <input type="text" placeholder="Confirmar nueva contraseña" class="input" name="_pass2"/>
+            <p id="msgError" class="msgError">
+                @Html.ValidationSummary()
+            </p>
+            <div class="buttons">
+                <input type="submit" class="btnAceptar" value="ACEPTAR"/>
+                <button type="button" class="btnCancelar" onclick="window.location.href='/Admin';">CANCELAR</button>
+            </div>
+        </form>
+    </div>
+</section>

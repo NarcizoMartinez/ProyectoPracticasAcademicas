@@ -1,0 +1,20 @@
+﻿@model SistemaPracticasAcademicas.Models.Practica
+@{ Layout = "AdminLayout";}
+<section class="content">
+    <div class="head">
+        <h1>Eliminar</h1>
+    </div>
+    <div class="div">
+        <form action="~/Admin/Practicas/EliminarFisica" method="post">
+            <input type="hidden" name="Id" value="@Model.Id" />
+            <h2>¿Está seguro que desea eliminar permanentemente la práctica: @Model.Nombre?</h2>
+            <p class="msgError">
+                @Html.ValidationSummary()
+            </p>
+            <div class="btn-si-no">
+                <button type="submit">Sí</button>
+                <button type="button" onclick="window.location.href='/Admin/Practicas';">No</button>
+            </div>
+        </form>
+    </div>
+</section>  
