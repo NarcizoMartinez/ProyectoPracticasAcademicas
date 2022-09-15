@@ -72,21 +72,21 @@ namespace SistemaPracticasAcademicas.Controllers
             {
                 RandomPasswordGenerator _random = new();
                 MailMessage _mensaje = new();
-                _mensaje.From = new MailAddress("practicasacademicas@outlook.com","ITESRC");
+                _mensaje.From = new MailAddress("","ITESRC"); //email
                 _mensaje.To.Add(_email);
                 _mensaje.Subject = "Restablecer contraseña Sistema Prácticas Academicas";
                 string _texto = System.IO.File.ReadAllText(Environment.WebRootPath + "/PasswordRecovery.html");
-                string _newPassword = _random.GetRandomPassword(7);
-                _mensaje.Body = _texto.Replace("{##defaultPass##}", _newPassword);
+                string _nuevaContrasena = _random.GetRandomPassword(7);
+                _mensaje.Body = _texto.Replace("{##defaultPass##}", _nuevaContrasena);
                 _mensaje.IsBodyHtml = true;
                 SmtpClient _cliente = new("smtp.office365.com", 587)
                 {
                     EnableSsl = true,
                     UseDefaultCredentials = false,
-                    Credentials = new NetworkCredential("practicasacademicas@outlook.com", "GestionAcademica1")
+                    Credentials = new NetworkCredential("", "") //email 'n' password
                 };
                 _cliente.Send(_mensaje);
-                _entity.Contrasena = _newPassword;
+                _entity.Contrasena = _nuevaContrasena;
                 Context.Update(_entity);
                 Context.SaveChanges();
                 return RedirectToAction("Index");
